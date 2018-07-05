@@ -14,16 +14,16 @@ export default class VideoService {
     const videoList: Video[] = JSON.parse(readFileSync('videos.json', 'utf8'))
     const ids = videoList.map((v: any) => v.youtube_id)
     const client = new GoogleAuth
-    await client.authenticate(['https://www.googleapis.com/auth/youtube'])
+    const oAuth2Client = await client.authenticate(['https://www.googleapis.com/auth/youtube'])
     const youtube = google.youtube({
       version: 'v3',
-      auth: client.oAuth2Client
+      auth: oAuth2Client
     })
     const res = await youtube.videos.list({
       id: ids.join(','),
       part: 'snippet, contentDetails, statistics'
     })
-    const items: youtube_v3.Schema$Video[] = res.data.items || []
+    const items = res.data.items || []
     ids.forEach((id: string) => {
       const video = videoList.find(v => id === v.youtube_id)
       if (!video) return

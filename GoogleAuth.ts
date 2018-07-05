@@ -18,8 +18,7 @@ interface DestroyableServer extends Server {
 export default class GoogleAuth {
   private options: Options
   private authorizeUrl!: string
-
-  public oAuth2Client: OAuth2Client
+  private oAuth2Client: OAuth2Client
 
   constructor(options: Options = { scopes: [] }) {
     this.options = options
@@ -30,8 +29,8 @@ export default class GoogleAuth {
     )
   }
 
-  async authenticate(scopes: string[]) {
-    return new Promise((resolve, reject) => {
+  async authenticate(scopes: string[]): Promise<OAuth2Client> {
+    return new Promise((resolve: (client: OAuth2Client) => void, reject: (message: string) => void) => {
       this.authorizeUrl = this.oAuth2Client.generateAuthUrl({
         access_type: 'offline',
         scope: scopes.concat(this.options.scopes).join(' ')
@@ -48,7 +47,7 @@ export default class GoogleAuth {
             resolve(this.oAuth2Client)
           }
         } catch(e) {
-          reject(e)
+          reject(e.message)
         }
       }).listen(3000, () => {
         open(this.authorizeUrl)
