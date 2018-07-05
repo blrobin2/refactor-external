@@ -16,11 +16,14 @@ describe('VideoService', () => {
 
   it('gets back a list of video metadata', async () => {
     const videoList = await videoService.videoList()
-    const videos = JSON.parse(videoList)
+    const videos: Video[] = JSON.parse(videoList)
 
-    const v1 = videos.find((v: Video) => v.youtube_id === "Ks-_Mh1QhMc")
-    const v2 = videos.find((v: Video) => v.youtube_id === "ZIsgHs0w44Y")
+    const v1 = videos.find(v => v.youtube_id === "Ks-_Mh1QhMc")
+    const v2 = videos.find(v => v.youtube_id === "ZIsgHs0w44Y")
 
+    expect(v1).toBeDefined()
+    expect(v2).toBeDefined()
+    if (!v1 || !v2) return
     expect(v1.views).toBe(30000000)
     expect(v2.views).toBe(400000)
 
