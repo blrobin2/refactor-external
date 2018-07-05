@@ -3,6 +3,7 @@ import { youtube_v3 } from "googleapis";
 export default class YouTubeGateway {
   private data: any
 
+  // TODO: Get response to correct opbject and make Map happy
   constructor(response: any) {
     this.data = new Map(response.map((i: any) => [i.id, i]))
   }
