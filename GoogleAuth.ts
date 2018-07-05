@@ -1,4 +1,4 @@
-import { createServer, Server } from 'http'
+import { createServer } from 'http'
 import * as querystring from 'querystring'
 import * as url from 'url'
 
@@ -9,10 +9,6 @@ import { OAuth2Client } from 'google-auth-library'
 
 interface Options {
   scopes: string[]
-}
-
-interface DestroyableServer extends Server {
-  destroy(): void
 }
 
 export default class GoogleAuth {
@@ -36,7 +32,7 @@ export default class GoogleAuth {
         scope: scopes.concat(this.options.scopes).join(' ')
       })
 
-      const server: DestroyableServer = <DestroyableServer>createServer(async (req, res) => {
+      const server = createServer(async (req, res) => {
         try {
           if (req && req.url && req.url.indexOf('/callback') > -1) {
             const qs = querystring.parse(url.parse(req.url).query || '')
