@@ -1,18 +1,16 @@
 import { readFileSync } from 'fs'
-import { youtube_v3 } from "googleapis"
 
 import Video from './Video'
 import YouTubeConnection from './YouTubeConnection'
 import YouTubeGateway from './YouTubeGateway'
 
-
 export default class VideoService {
   async videoList(): Promise<string> {
     const videoList: Video[] = this.getVideoList()
-    const items = await this.getYouTubeItems(videoList)
-    const youtube = new YouTubeGateway(items)
+    const youtube = await this.getYouTubeItems(videoList)
+    videoList.forEach(video =>
+      video.enrichWithYouTube(youtube.item(video.youtube_id)))
 
-    videoList.forEach(video => video.enrichWithYouTube(youtube.item(video.youtube_id)))
     return JSON.stringify(videoList.map(v => v.toObj()))
   }
 
@@ -21,8 +19,9 @@ export default class VideoService {
       .map((h: any) => new Video(h))
   }
 
-  private getYouTubeItems(videoList: Video[]): Promise<youtube_v3.Schema$Video[]> {
+  private async getYouTubeItems(videoList: Video[]): Promise<YouTubeGateway> {
     const ids = videoList.map(v => v.youtube_id)
-    return (new YouTubeConnection).listVideos(ids)
+    const items = await (new YouTubeConnection).listVideos(ids)
+    return new YouTubeGateway(items)
   }
 }

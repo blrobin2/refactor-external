@@ -1,6 +1,5 @@
 export default class Video {
   private data: any
-  [key: string]: any
 
   constructor(aHash: any) {
     this.data = aHash
