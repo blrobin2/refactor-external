@@ -3,7 +3,8 @@ import VideoService from './VideoService'
 
 (async() => {
   try {
-    const vids = await VideoService.videoList()
+    const videoService = new VideoService
+    const vids = await videoService.videoList();
     console.log(vids)
   } catch (e) {
     console.error(e.message)

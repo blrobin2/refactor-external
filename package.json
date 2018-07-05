@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "test": "jest"
+  },
   "dependencies": {
     "dotenv": "^6.0.0",
     "googleapis": "^32.0.0",
@@ -11,8 +14,30 @@
     "typescript": "^2.9.2"
   },
   "devDependencies": {
+    "@types/jest": "^23.1.4",
     "@types/node": "^10.5.1",
     "@types/open": "^0.0.29",
-    "@types/server-destroy": "^1.0.0"
+    "@types/server-destroy": "^1.0.0",
+    "jest": "^23.3.0",
+    "ts-jest": "^23.0.0"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ],
+    "transform": {
+      "^.+\\.(ts|tsx)$": "ts-jest"
+    },
+    "globals": {
+      "ts-jest": {
+        "tsConfigFile": "tsconfig.json"
+      }
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$"
   }
 }
