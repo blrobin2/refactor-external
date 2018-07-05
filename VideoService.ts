@@ -5,7 +5,7 @@ import Video from './Video'
 import YouTubeConnection from './YouTubeConnection'
 
 export default class VideoService {
-  async videoList() {
+  async videoList(): Promise<string> {
     const videoList: Video[] = JSON.parse(readFileSync('videos.json', 'utf8'))
     const ids = videoList.map((v: any) => v.youtube_id)
     const youtube = new YouTubeConnection
@@ -24,8 +24,6 @@ export default class VideoService {
 
     return JSON.stringify(videoList)
   }
-
-
 
   private getViewCount(youtubeRecord?: youtube_v3.Schema$Video): string {
     return (youtubeRecord && youtubeRecord.statistics && youtubeRecord.statistics.viewCount) || "0";
