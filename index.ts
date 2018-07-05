@@ -7,6 +7,6 @@ import VideoService from './VideoService'
     const vids = await videoService.videoList();
     console.log(vids)
   } catch (e) {
-    console.error(e.message)
+    console.error(e)
   }
 })()

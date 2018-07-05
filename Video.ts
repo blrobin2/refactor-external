@@ -6,7 +6,7 @@ export default class Video {
     this.data = aHash
   }
 
-  get youtube_id() {
+  get youtube_id(): string {
     return this.data.youtube_id
   }
 

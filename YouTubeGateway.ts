@@ -1,5 +1,3 @@
-import { youtube_v3 } from "googleapis";
-
 export default class YouTubeGateway {
   private data: any
 

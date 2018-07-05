@@ -1,8 +1,6 @@
 import { google, youtube_v3 } from "googleapis"
 import GoogleAuth from "./GoogleAuth"
 
-import Video from "./Video";
-
 export default class YouTubeConnection {
   public async listVideos(ids: string[]): Promise<youtube_v3.Schema$Video[]> {
     const client = new GoogleAuth
