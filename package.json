@@ -1,0 +1,18 @@
+{
+  "name": "refactoring-external",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^6.0.0",
+    "googleapis": "^32.0.0",
+    "open": "^0.0.5",
+    "server-destroy": "^1.0.1",
+    "typescript": "^2.9.2"
+  },
+  "devDependencies": {
+    "@types/node": "^10.5.1",
+    "@types/open": "^0.0.29",
+    "@types/server-destroy": "^1.0.0"
+  }
+}
