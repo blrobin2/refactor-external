@@ -1,5 +1,5 @@
 require('dotenv').config()
-import VideoService from './VideoService'
+import VideoService from './src/VideoService'
 
 (async() => {
   try {
