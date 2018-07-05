@@ -1,10 +1,10 @@
 import { readFileSync } from "fs";
 
-import VideoService from "../VideoService"
-import YouTubeConnection from "../YouTubeConnection";
-import Video from "../Video"
+import VideoService from "../src/VideoService"
+import YouTubeConnection from "../src/YouTubeConnection";
+import Video from "../src/Video"
 
-jest.mock("../YouTubeConnection")
+jest.mock("../src/YouTubeConnection")
 
 describe('VideoService', () => {
   // Mock IO values to get back consistency
