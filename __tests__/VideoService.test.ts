@@ -16,7 +16,7 @@ describe('VideoService', () => {
 
   it('gets back a list of video metadata', async () => {
     const videoList = await videoService.videoList()
-    const videos = await JSON.parse(videoList)
+    const videos = JSON.parse(videoList)
 
     const v1 = videos.find((v: Video) => v.youtube_id === "Ks-_Mh1QhMc")
     const v2 = videos.find((v: Video) => v.youtube_id === "ZIsgHs0w44Y")
