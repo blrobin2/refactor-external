@@ -8,8 +8,8 @@
   },
   "dependencies": {
     "dotenv": "^6.0.0",
-    "googleapis": "^32.0.0",
-    "open": "^0.0.5",
+    "googleapis": "^49.0.0",
+    "open": "^6.0.0",
     "server-destroy": "^1.0.1",
     "typescript": "^2.9.2"
   },
