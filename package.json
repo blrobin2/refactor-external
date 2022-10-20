@@ -7,7 +7,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "dotenv": "^6.0.0",
+    "dotenv": "^6.2.0",
     "googleapis": "^49.0.0",
     "open": "^6.0.0",
     "server-destroy": "^1.0.1",
